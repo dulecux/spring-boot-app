@@ -1,0 +1,62 @@
+server:
+  port: '8082'
+
+spring:
+  profiles:
+    active: dev
+
+---
+
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: student
+    url: jdbc:mysql://localhost:3306/depapp
+    password: student
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+welcome:
+  message: Welcome to Application
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        exclude: "env, beans"
+---
+
+spring:
+  profiles: qa
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: student
+    url: jdbc:mysql://localhost:3306/depapp-qa
+    password: student
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+welcome:
+  message: Welcome to Application
+
+---
+
+spring:
+  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: student
+    url: jdbc:mysql://localhost:3306/depapp-prod
+    password: student
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+welcome:
+  message: Welcome to Application
+
+
